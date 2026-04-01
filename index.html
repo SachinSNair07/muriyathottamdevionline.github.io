@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muriyathottam Devi Amma Temple</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson:   #7B0D0D;
+    --crimson-dk:#5a0808;
+    --gold:      #C9942A;
+    --gold-lt:   #E8B84B;
+    --cream:     #FDF6EC;
+    --cream-dk:  #F5E8D0;
+    --text:      #2C1A0E;
+    --text-lt:   #5C3D1E;
+    --border:    #C9942A44;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background-color: var(--cream);
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  /* ── DECORATIVE DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px auto 0;
+    justify-content: center;
+  }
+  .divider span { color: var(--gold-lt); font-size: 1.3rem; }
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(180deg, var(--crimson-dk) 0%, var(--crimson) 100%);
+    color: white;
+    text-align: center;
+    padding: 0;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle kolam‑like pattern overlay */
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(201,148,42,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(201,148,42,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .header-top {
+    background: rgba(0,0,0,0.25);
+    padding: 6px 20px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--gold-lt);
+    font-family: 'Cinzel', serif;
+  }
+
+  .header-body {
+    padding: 32px 20px 28px;
+    position: relative;
+  }
+
+  .om-symbol {
+    font-size: 2.8rem;
+    color: var(--gold-lt);
+    display: block;
+    margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(232,184,75,0.4);
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    line-height: 1.3;
+  }
+
+  .header-subtitle {
+    margin-top: 10px;
+    color: var(--gold-lt);
+    font-size: 1rem;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+
+  .header-location {
+    margin-top: 6px;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--crimson-dk);
+    border-bottom: 2px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 14px 18px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    transition: color 0.2s, background 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+
+  nav ul li a:hover {
+    color: var(--gold-lt);
+    border-bottom-color: var(--gold-lt);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 56px 20px;
+  }
+
+  section:nth-child(odd) { background: var(--cream); }
+  section:nth-child(even) { background: var(--cream-dk); }
+
+  .section-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 4vw, 1.75rem);
+    font-weight: 600;
+    color: var(--crimson);
+    text-align: center;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+
+  .section-body {
+    margin-top: 28px;
+  }
+
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CARD ── */
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 16px rgba(123,13,13,0.07);
+  }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .info-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .info-chip {
+    background: var(--cream-dk);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    color: var(--text-lt);
+    font-weight: 500;
+  }
+
+  .info-chip strong { color: var(--crimson); }
+
+  /* ── RENOVATION PROGRESS ── */
+  .goal-box {
+    background: linear-gradient(135deg, var(--crimson-dk), var(--crimson));
+    color: white;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .goal-box .amount {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold-lt);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .goal-box .label {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+  }
+
+  .progress-wrap {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 22%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+    border-radius: 999px;
+    transition: width 1.4s ease;
+  }
+
+  .progress-label {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── WORK LIST ── */
+  .work-list {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .work-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+
+  .work-item::before {
+    content: '🪔';
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    margin-top: 1px;
+  }
+
+  /* ── DONATE ── */
+  .donate-card {
+    background: white;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(123,13,13,0.12);
+  }
+
+  .donate-card .donate-header {
+    background: linear-gradient(135deg, var(--crimson-dk), var(--crimson));
+    color: white;
+    padding: 20px 28px;
+    text-align: center;
+  }
+
+  .donate-card .donate-header h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--gold-lt);
+    margin-bottom: 4px;
+  }
+
+  .donate-card .donate-header p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+  }
+
+  .donate-body {
+    padding: 28px 32px;
+  }
+
+  .upi-box {
+    background: var(--cream-dk);
+    border: 1px dashed var(--gold);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    text-align: center;
+  }
+
+  .upi-box .upi-label {
+    font-size: 0.85rem;
+    color: var(--text-lt);
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 8px;
+  }
+
+  .upi-id {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--crimson);
+    letter-spacing: 0.5px;
+    word-break: break-all;
+  }
+
+  .transparency-note {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: #FFF8E1;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.92rem;
+    color: var(--text-lt);
+    line-height: 1.6;
+  }
+
+  .transparency-note strong { color: var(--crimson); }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--crimson-dk), var(--crimson));
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid var(--gold);
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+  }
+
+  .cta-btn:hover {
+    background: linear-gradient(135deg, #8B1010, #9B1111);
+    transform: translateY(-1px);
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .contact-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .contact-detail {
+    font-size: 0.95rem;
+    color: var(--text-lt);
+  }
+
+  .contact-detail strong {
+    display: block;
+    color: var(--crimson);
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .contact-detail a {
+    color: var(--crimson);
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .contact-detail a:hover { text-decoration: underline; }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    background: var(--crimson);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 2px solid var(--gold);
+    transition: background 0.2s;
+  }
+
+  .map-link:hover { background: var(--crimson-dk); }
+
+  /* ── TIMINGS BANNER ── */
+  .timings-banner {
+    background: linear-gradient(135deg, var(--crimson-dk), var(--crimson));
+    color: white;
+    padding: 18px 24px;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    border: 1px solid var(--gold);
+  }
+
+  .timing-item {
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .timing-item .t-label {
+    font-size: 0.78rem;
+    color: var(--gold-lt);
+    letter-spacing: 1.5px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+  }
+
+  .timing-item .t-time {
+    font-size: 1.05rem;
+    color: white;
+    margin-top: 3px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--crimson-dk);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 28px 20px;
+    border-top: 4px solid var(--gold);
+    font-size: 0.9rem;
+  }
+
+  footer .footer-om {
+    font-size: 2rem;
+    color: var(--gold-lt);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  footer p { margin-bottom: 4px; }
+  footer .footer-name {
+    font-family: 'Cinzel', serif;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  /* ── URGENT BADGE ── */
+  .urgent-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--crimson-dk);
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    nav ul li a {
+      padding: 12px 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.8px;
+    }
+    .card, .donate-body { padding: 20px 18px; }
+    .goal-box .amount { font-size: 1.6rem; }
+    body { font-size: 17px; }
+    section { padding: 40px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">🌺 &nbsp; ഓം ദേവ്യൈ നമഃ &nbsp; 🌺</div>
+  <div class="header-body">
+    <span class="om-symbol">ॐ</span>
+    <h1>Muriyathottam<br>Devi Amma Temple</h1>
+    <p class="header-subtitle">Śrī Bhadrakāḷī Devī Kshetram</p>
+    <p class="header-location">📍 Uchakkada – Nellimoodu Road, Vizhinjam, Kerala</p>
+    <div class="divider"><span>❧</span></div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#renovation">Renovation</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-title">Welcome to Our Sacred Temple</p>
+      <div class="divider"><span>✦</span></div>
+      <div class="section-body card">
+        <p>
+          The <strong>Muriyathottam Devi Amma Temple</strong> is an ancient and revered place of worship
+          nestled in Vizhinjam, Kerala. For many generations, this temple has served as a spiritual
+          beacon of strength, protection, and blessings for thousands of devoted families.
+        </p>
+        <p>
+          The presiding deity, <strong>Śrī Bhadrakāḷī Devi</strong>, is worshipped here with
+          deep devotion through traditional Tantric rituals that have been carefully preserved
+          over the centuries.
+        </p>
+        <p>
+          Devotees visit the temple seeking the Goddess's blessings for good health,
+          protection from adversity, prosperity, and the well-being of their families.
+          The temple remains a living centre of faith, culture, and community.
+        </p>
+        <div class="timings-banner">
+          <div class="timing-item">
+            <div class="t-label">Morning Pooja</div>
+            <div class="t-time">5:30 AM – 8:00 AM</div>
+          </div>
+          <div class="timing-item">
+            <div class="t-label">Evening Pooja</div>
+            <div class="t-time">5:30 PM – 7:30 PM</div>
+          </div>
+          <div class="timing-item">
+            <div class="t-label">Open Daily</div>
+            <div class="t-time">All Days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-title">About the Temple</p>
+      <div class="divider"><span>✦</span></div>
+      <div class="section-body">
+        <div class="card">
+          <p>
+            <strong>Śrī Bhadrakāḷī</strong> — the fierce and compassionate form of the Great Mother Goddess —
+            is the principal deity of this kshetram. She is the embodiment of courage, protection,
+            and divine justice. Devotees offer prayers, flowers, lamps, and special sevas to seek
+            her blessings and protection.
+          </p>
+          <p>
+            This temple follows the ancient <em>Tantric traditions of Kerala</em>, with rituals and
+            customs performed exactly as handed down through generations of priests. The sacred
+            atmosphere, the fragrance of incense, and the glow of oil lamps create an experience
+            of profound peace and devotion.
+          </p>
+          <p>
+            The temple holds great significance for the local community and is the centre of
+            important festivals and collective prayers throughout the year.
+          </p>
+          <div class="info-row">
+            <div class="info-chip"><strong>Deity</strong> — Śrī Bhadrakāḷī</div>
+            <div class="info-chip"><strong>Tradition</strong> — Kerala Tantric</div>
+            <div class="info-chip"><strong>Location</strong> — Vizhinjam, Kerala</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENOVATION -->
+<section id="renovation">
+  <div class="section-inner">
+    <div class="reveal">
+      <div style="text-align:center;">
+        <span class="urgent-badge">🔔 Urgent Appeal</span>
+      </div>
+      <p class="section-title">Temple Renovation</p>
+      <div class="divider"><span>✦</span></div>
+      <div class="section-body card">
+        <p>
+          The Muriyathottam Devi Amma Temple is in urgent need of structural renovation.
+          Over the years, the sacred shrine has suffered from weathering and wear, and it is
+          now necessary to restore the structure so that worship can continue safely and with
+          the dignity it deserves.
+        </p>
+        <p>
+          We humbly appeal to all devotees, well-wishers, and the faithful community to
+          come forward with their generous support. Every contribution, however small,
+          is a blessed offering to the Goddess.
+        </p>
+
+        <div class="work-list">
+          <div class="work-item">Roof and structural repair of the main shrine</div>
+          <div class="work-item">Restoration of the Nalambalam (outer corridor)</div>
+          <div class="work-item">New oil lamp stands and pooja articles</div>
+          <div class="work-item">Drainage and waterproofing work</div>
+          <div class="work-item">Repainting and plastering of walls</div>
+          <div class="work-item">Electrical wiring and lighting improvements</div>
+        </div>
+
+        <div class="goal-box">
+          <span class="amount">₹ 5,00,000</span>
+          <span class="label">TOTAL RENOVATION TARGET</span>
+          <div class="progress-wrap">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div class="progress-label">Fundraising in progress — your support is needed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-title">Support the Renovation</p>
+      <div class="divider"><span>✦</span></div>
+      <div class="section-body">
+        <div class="donate-card">
+          <div class="donate-header">
+            <h3>🙏 Make a Donation</h3>
+            <p>Your contribution is a sacred act of devotion</p>
+          </div>
+          <div class="donate-body">
+            <p>
+              We sincerely request your generous contribution towards the renovation of
+              this ancient and sacred temple. All amounts are welcome and will be
+              used entirely for the renovation work.
+            </p>
+
+            <div class="upi-box">
+              <div class="upi-label">UPI PAYMENT ID</div>
+              <div class="upi-id">YOUR-UPI-ID-HERE</div>
+            </div>
+
+            <p style="text-align:center; font-size:0.9rem; color:var(--text-lt);">
+              Scan any UPI app (GPay, PhonePe, Paytm, BHIM) to donate directly.
+            </p>
+
+            <a class="cta-btn" href="upi://pay?pa=YOUR-UPI-ID-HERE&pn=MuriyathottamDeviAmmaTemple&cu=INR">
+              🙏 &nbsp; Donate via UPI
+            </a>
+
+            <div class="transparency-note">
+              <strong>Note on Transparency:</strong> Due to temporary bank account processing,
+              donations are currently being collected through UPI under the direct supervision
+              of the temple family and trustees. All contributions will be properly accounted
+              for. Receipts are available upon request. We are committed to full transparency
+              in the use of every rupee received.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-title">Contact Us</p>
+      <div class="divider"><span>✦</span></div>
+      <div class="section-body">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <strong>Phone</strong>
+              <a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail">
+              <strong>Email</strong>
+              <a href="mailto:officialmuriyathottamdevi@gmail.com">officialmuriyathottamdevi@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Address</strong>
+              Uchakkada – Nellimoodu Rd,<br>Vizhinjam, Kerala
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 24px; text-align: center;">
+          <a class="map-link" href="https://maps.app.goo.gl/uHpYgiq9v2GTsKkw5" target="_blank" rel="noopener">
+            🗺️ &nbsp; View on Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-om">ॐ</span>
+  <p class="footer-name">Muriyathottam Devi Amma Temple</p>
+  <p>Vizhinjam, Kerala &nbsp;|&nbsp; Dedicated to Śrī Bhadrakāḷī Devi</p>
+  <p style="margin-top:10px; font-size:0.82rem; color:rgba(255,255,255,0.5);">
+    © 2026 Muriyathottam Devi Amma Temple. All Rights Reserved.
+  </p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Animate progress bar on scroll
+  const bar = document.getElementById('progressBar');
+  const barObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(() => { bar.style.width = '22%'; }, 400);
+    }
+  }, { threshold: 0.3 });
+  barObserver.observe(bar);
+</script>
+</body>
+</html>
